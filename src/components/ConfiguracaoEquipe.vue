@@ -8,23 +8,23 @@
     <div class="row">
       <div class="col-8">
         <p>
-          Enfermeiro: <strong>{{ team.nurse }}</strong>
+          Enfermeiro: <strong>{{ equipe.enfermeiros }}</strong>
         </p>
         <p>
-          Socorrista: <strong>{{ team.rescuer }}</strong>
+          Socorrista: <strong>{{ equipe.socorristas }}</strong>
         </p>
         <p>
-          Médico: <strong>{{ team.doctor }}</strong>
+          Médico: <strong>{{ equipe.medico }}</strong>
         </p>
         <p>
-          Carro: <strong>{{ team.ambulance }}</strong>
+          Carro: <strong>{{ equipe.ambulancia }}</strong>
         </p>
         <p>
-          Telefone: <strong>{{ team.phone }}</strong>
+          Telefone: <strong>{{ equipe.telefone }}</strong>
         </p>
         <p>
           Kit de reanimação:
-          <strong>{{ team.reanimationKit }}</strong>
+          <strong>{{ equipe.kitMedico }}</strong>
         </p>
       </div>
       <div class="col-4 text-center">
@@ -51,8 +51,8 @@
 export default {
   name: "CONFIGURACAOEQUIPE",
   computed: {
-    team() {
-      return this.$store.state.team;
+    equipe() {
+      return this.$store.state.equipe;
     },
   },
 };
