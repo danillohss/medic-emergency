@@ -11,20 +11,20 @@
           Enfermeiro: <strong>{{ team.nurse }}</strong>
         </p>
         <p>
-          Socorrista: <strong>{{ $store.state.team.rescuer }}</strong>
+          Socorrista: <strong>{{ team.rescuer }}</strong>
         </p>
         <p>
-          Médico: <strong>{{ $store.state.team.doctor }}</strong>
+          Médico: <strong>{{ team.doctor }}</strong>
         </p>
         <p>
-          Carro: <strong>{{ $store.state.team.ambulance }}</strong>
+          Carro: <strong>{{ team.ambulance }}</strong>
         </p>
         <p>
-          Telefone: <strong>{{ $store.state.team.phone }}</strong>
+          Telefone: <strong>{{ team.phone }}</strong>
         </p>
         <p>
           Kit de reanimação:
-          <strong>{{ $store.state.team.reanimationKit }}</strong>
+          <strong>{{ team.reanimationKit }}</strong>
         </p>
       </div>
       <div class="col-4 text-center">
@@ -47,9 +47,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+//import { mapState } from "vuex";
 export default {
   name: "CONFIGURACAOEQUIPE",
-  computed: mapState(["team"]),
+  computed: {
+    team() {
+      return this.$store.state.team;
+    },
+  },
 };
 </script>
