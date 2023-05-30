@@ -23,7 +23,7 @@
           Telefone: <strong>{{ equipe.telefone }}</strong>
         </p>
         <p>
-          Kit de reanimação:
+          Kit Médico:
           <strong>{{ equipe.kitMedico }}</strong>
         </p>
       </div>

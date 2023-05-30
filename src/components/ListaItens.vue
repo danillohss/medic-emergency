@@ -2,7 +2,7 @@
   <div>
     Lista Itens {{ tipo }}
     <hr />
-    <item v-for="(item, index) in itens" :key="index" :dados="item"/>
+    <item v-for="(item, index) in itens" :key="index" :dados="item" />
   </div>
 </template>
 
@@ -20,18 +20,26 @@ export default {
   computed: {
     ...mapState({
       enfermeiros: (state) => state.enfermeiros,
-      socorristas: (state) => state.socorristas,
       medicos: (state) => state.medicos,
       equipamentos: (state) => state.equipamentos,
+      ambulancias: (state) => state.equipamentos.ambulancias,
+      kitsMedicos: (state) => state.equipamentos.kitsMedicos,
+      telefones: (state) => state.equipamentos.telefones,
     }),
     itens() {
       switch (this.tipo) {
         case "enfermeiros":
           return this.enfermeiros;
         case "socorristas":
-          return this.socorristas;
+          return this.$store.getters.filtroSocorristaTurno;
         case "medicos":
           return this.medicos;
+        case "ambulancias":
+          return this.ambulancias;
+        case "kits-medicos":
+          return this.kitsMedicos;
+        case "telefones":
+          return this.telefones;
       }
       return [];
     },

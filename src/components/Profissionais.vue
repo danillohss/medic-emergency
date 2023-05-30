@@ -8,21 +8,21 @@
             <router-link
               class="nav-link"
               :to="{ name: 'profissionais', params: { tipo: 'enfermeiros' } }"
-              >Enfermeiros</router-link
+              >Enfermeiros ({{ $store.getters.totalEnfermeiros }})</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               class="nav-link"
               :to="{ name: 'profissionais', params: { tipo: 'socorristas' } }"
-              >Socorristas</router-link
+              >Socorristas ({{ $store.getters.totalSocorristas }})</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               class="nav-link"
               :to="{ name: 'profissionais', params: { tipo: 'medicos' } }"
-              >Médicos</router-link
+              >Médicos ({{ $store.getters.totalMedicos }})</router-link
             >
           </li>
         </ul>
