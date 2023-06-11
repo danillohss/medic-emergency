@@ -1,6 +1,13 @@
 <template>
   <div>
-    Lista Itens {{ tipo }}
+    <div v-if="tipo == 'socorristas'">
+      <select class="form-control form-control-sm" v-model="turno">
+        <option value="">Todos</option>
+        <option value="manha">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+      </select>
+    </div>
     <hr />
     <item v-for="(item, index) in itens" :key="index" :dados="item" />
   </div>
@@ -11,6 +18,9 @@ import Item from "@/components/Item.vue";
 import { mapState } from "vuex";
 export default {
   name: "LISTAITENS",
+  data: () => ({
+    turno: "",
+  }),
   components: {
     Item,
   },
@@ -31,7 +41,7 @@ export default {
         case "enfermeiros":
           return this.enfermeiros;
         case "socorristas":
-          return this.$store.getters.filtroSocorristaTurno;
+          return this.$store.getters.filtroSocorristaTurno(this.turno);
         case "medicos":
           return this.medicos;
         case "ambulancias":

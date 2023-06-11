@@ -61,5 +61,17 @@ export default new Vuex.Store({
         totalMedicos(state) {
             return state.medicos.length;
         },
+        totalSocorristas(state) {
+            return state.socorristas.length;
+        },
+        totalAmbulancias(state) {
+            return state.equipamentos.ambulancias.length;
+        },
+        totalTelefones(state) {
+            return state.equipamentos.telefones.length;
+        },
+        totalKits(state) {
+            return state.equipamentos.kitsMedicos.length;
+        }
     }
 })

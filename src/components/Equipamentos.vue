@@ -8,21 +8,21 @@
             <router-link
               class="nav-link"
               :to="{ name: 'equipamentos', params: { tipo: 'ambulancias' } }"
-              >Carros</router-link
+              >Ambulancias({{ $store.getters.totalAmbulancias }})</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               class="nav-link"
               :to="{ name: 'equipamentos', params: { tipo: 'telefones' } }"
-              >Telefones</router-link
+              >Telefones({{ $store.getters.totalTelefones }})</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
               class="nav-link"
               :to="{ name: 'equipamentos', params: { tipo: 'kits-medicos' } }"
-              >Kits Médicos</router-link
+              >Kits Médicos({{ $store.getters.totalKits }})</router-link
             >
           </li>
         </ul>
