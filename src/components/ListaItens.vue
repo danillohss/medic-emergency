@@ -11,6 +11,9 @@
     <hr />
     <item v-for="(item, index) in itens" :key="index" :dados="item" />
   </div>
+  <div v-if="tipo == 'socorristas'">
+    Total: ({{ $store.getters.totalSocorristasPorTurno(turno) }})
+  </div>
 </template>
 
 <script>

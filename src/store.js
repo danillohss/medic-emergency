@@ -19,7 +19,7 @@ export default new Vuex.Store({
             { id: 5, nome: 'Danillo', escala: '12x36' }
         ],
         socorristas: [
-            { id: 1, nome: 'Marcos', turno: 'manhã' },
+            { id: 1, nome: 'Marcos', turno: 'manha' },
             { id: 2, nome: 'Felipe', turno: 'tarde' },
             { id: 3, nome: 'Cláudia', turno: 'tarde' },
             { id: 4, nome: 'Michele', turno: 'noite' }
@@ -64,20 +64,13 @@ export default new Vuex.Store({
             }
 
         },
-        totalMedicos(state) {
-            return state.medicos.length;
+        totalSocorristas: state => state.socorristas.length,
+        totalSocorristasPorTurno: (state, getters) => {
+            return turno => getters.filtroSocorristaTurno(turno).length
         },
-        totalSocorristas(state) {
-            return state.socorristas.length;
-        },
-        totalAmbulancias(state) {
-            return state.equipamentos.ambulancias.length;
-        },
-        totalTelefones(state) {
-            return state.equipamentos.telefones.length;
-        },
-        totalKits(state) {
-            return state.equipamentos.kitsMedicos.length;
-        }
+        totalMedicos: state => state.medicos.length,
+        totalAmbulancias: state => state.equipamentos.ambulancias.length,
+        totalTelefones: state => state.equipamentos.telefones.length,
+        totalKits: state => state.equipamentos.kitsMedicos.length,
     }
 })
