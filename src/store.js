@@ -4,12 +4,12 @@ export default new Vuex.Store({
     state: {
         titulo: 'Emergências médicas',
         equipe: {
-            enfermeiros: 'Nome enfermeiro',
-            socorristas: 'Nome do socorrista',
-            medico: 'Nome do médico',
-            ambulancia: 'Placa da ambulância',
-            telefone: '+55 (11) 9 9999-9999',
-            kitMedico: 'Kit 001'
+            enfermeiro: '',
+            socorrista: '',
+            medico: '',
+            ambulancia: '',
+            telefone: '',
+            kitMedico: ''
         },
         enfermeiros: [
             { id: 1, nome: 'João', escala: '12x36' },
@@ -72,5 +72,25 @@ export default new Vuex.Store({
         totalAmbulancias: state => state.equipamentos.ambulancias.length,
         totalTelefones: state => state.equipamentos.telefones.length,
         totalKits: state => state.equipamentos.kitsMedicos.length,
+    },
+    mutations: {
+        limparEquipe(state) {
+            state.equipe.enfermeiro = ''
+            state.equipe.socorrista = ''
+            state.equipe.medico = ''
+            state.equipe.ambulancia = ''
+            state.equipe.telefone = ''
+            state.equipe.kitMedico = ''
+        },
+        setItemEquipe(state, item) {
+            let t = item.tipo;
+            let d = item.dados;
+            if (t == 'enfermeiros') state.equipe.enfermeiro = d.nome, console.log(d.nome)
+            if (t == 'socorristas') state.equipe.socorrista = d.nome, console.log(state.equipe.socorrista)
+            if (t == 'medicos') state.equipe.medico = d.nome
+            if (t == 'ambulancias') state.equipe.ambulancia = d.placa
+            if (t == 'telefones') state.equipe.telefone = d.telefone
+            if (t == 'kits-medicos') state.equipe.kitMedico = d.kit
+        }
     }
 })

@@ -9,16 +9,21 @@
       </select>
     </div>
     <hr />
-    <item v-for="(item, index) in itens" :key="index" :dados="item" />
+    <item
+      v-for="(item, index) in itens"
+      :key="index"
+      :dados="item"
+      :tipo="tipo"
+    />
   </div>
   <div v-if="tipo == 'socorristas'">
-    Total: ({{ $store.getters.totalSocorristasPorTurno(turno) }})
+    Total: ({{ totalSocorristasPorTurno(turno) }})
   </div>
 </template>
 
 <script>
 import Item from "@/components/Item.vue";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
   name: "LISTAITENS",
   data: () => ({
@@ -39,12 +44,16 @@ export default {
       kitsMedicos: (state) => state.equipamentos.kitsMedicos,
       telefones: (state) => state.equipamentos.telefones,
     }),
+    ...mapGetters({
+      totalSocorristasPorTurno: "totalSocorristasPorTurno",
+      filtroSocorristaTurno: "filtroSocorristaTurno",
+    }),
     itens() {
       switch (this.tipo) {
         case "enfermeiros":
           return this.enfermeiros;
         case "socorristas":
-          return this.$store.getters.filtroSocorristaTurno(this.turno);
+          return this.filtroSocorristaTurno(this.turno);
         case "medicos":
           return this.medicos;
         case "ambulancias":

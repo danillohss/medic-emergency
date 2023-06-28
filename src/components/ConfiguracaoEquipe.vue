@@ -8,10 +8,10 @@
     <div class="row">
       <div class="col-8">
         <p>
-          Enfermeiro: <strong>{{ equipe.enfermeiros }}</strong>
+          Enfermeiro: <strong>{{ equipe.enfermeiro }}</strong>
         </p>
         <p>
-          Socorrista: <strong>{{ equipe.socorristas }}</strong>
+          Socorrista: <strong>{{ equipe.socorrista }}</strong>
         </p>
         <p>
           Médico: <strong>{{ equipe.medico }}</strong>
@@ -38,6 +38,14 @@
         </div>
         <div class="row mt-3">
           <div class="col">
+            <button
+              type="button"
+              class="btn btn-danger"
+              style="margin: 0 15px"
+              @click="limparEquipe"
+            >
+              Limpar Equipe
+            </button>
             <button type="button" class="btn btn-primary">Montar equipe</button>
           </div>
         </div>
@@ -53,6 +61,11 @@ export default {
   computed: {
     equipe() {
       return this.$store.state.equipe;
+    },
+  },
+  methods: {
+    limparEquipe() {
+      this.$store.commit("limparEquipe");
     },
   },
 };

@@ -9,7 +9,11 @@
     <div class="col-2" v-if="dados.escala" v-text="dados.escala"></div>
     <div class="col-2" v-if="dados.turno" v-text="dados.turno"></div>
     <div class="col-1">
-      <i class="bi-check2-square" style="cursor: pointer"></i>
+      <i
+        class="bi-check2-square"
+        style="cursor: pointer"
+        @click="adcItemEquipe"
+      ></i>
     </div>
   </div>
 </template>
@@ -19,6 +23,16 @@ export default {
   name: "ITEM",
   props: {
     dados: Object,
+    tipo: String,
+  },
+  methods: {
+    adcItemEquipe() {
+      let item = {
+        tipo: this.tipo,
+        dados: this.dados,
+      };
+      this.$store.commit("setItemEquipe", item);
+    },
   },
 };
 </script>
