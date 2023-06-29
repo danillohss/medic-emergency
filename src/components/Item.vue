@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "ITEM",
   props: {
@@ -26,12 +27,23 @@ export default {
     tipo: String,
   },
   methods: {
+    ...mapMutations({
+      setItemEquipe: "setItemEquipe",
+      //evento commit para o vuex
+      setItemEquipeVerificacao: (commit, payload) => {
+        /*
+          Camada de lógica, somente efetuar o commit com base em algumas condições por exemplo
+        */
+        commit("setItemEquipe", payload);
+      },
+    }),
     adcItemEquipe() {
       let item = {
         tipo: this.tipo,
         dados: this.dados,
       };
-      this.$store.commit("setItemEquipe", item);
+      //this.setItemEquipe(item);
+      this.setItemEquipeVerificacao(item)
     },
   },
 };
