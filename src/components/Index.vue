@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">{{ $store.state.titulo }}</a>
@@ -8,7 +7,6 @@
     </nav>
 
     <div class="container">
-
       <div class="row mt-5">
         <div class="col-6 p">
           <profissionais />
@@ -35,21 +33,59 @@
 </template>
 
 <script>
-import ConfiguracaoEquipe from './ConfiguracaoEquipe.vue'
-import Equipamentos from './Equipamentos.vue'
-import Equipes from './Equipes.vue'
-import Profissionais from './Profissionais.vue'
-
+import ConfiguracaoEquipe from "./ConfiguracaoEquipe.vue";
+import Equipamentos from "./Equipamentos.vue";
+import Equipes from "./Equipes.vue";
+import Profissionais from "./Profissionais.vue";
+import api from "../service/api";
+import { mapMutations } from "vuex";
 export default {
-  name: 'INDEX',
-  components: { 
+  name: "INDEX",
+  components: {
     ConfiguracaoEquipe,
     Equipamentos,
     Equipes,
-    Profissionais
+    Profissionais,
   },
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+  methods: {
+    ...mapMutations(["setEnfermeiros", "setSocorristas", "setMedicos"]),
+    async getEnfermeiros() {
+      const response = await api.get("/enfermeiros");
+      this.$store.commit("setEnfermeiros", response.data);
+    },
+    async getSocorristas() {
+      const response = await api.get("/socorristas");
+      this.$store.commit("setSocorristas", response.data);
+    },
+    async getMedicos() {
+      const response = await api.get("/medicos");
+      this.$store.commit("setMedicos", response.data);
+    },
+    async getAmbulancias() {
+      const response = await api.get("/ambulancias");
+      this.$store.commit("setAmbulancias", response.data);
+    },
+    async getKitsMedicos() {
+      const response = await api.get("/kits-medicos");
+      this.$store.commit("setKitsMedicos", response.data);
+    },
+    async getTelefones() {
+      const response = await api.get("/telefones");
+      this.$store.commit("setTelefones", response.data);
+    },
+  },
+  async created() {
+    this.getEnfermeiros();
+    this.getSocorristas();
+    this.getMedicos();
+    this.getAmbulancias();
+    this.getKitsMedicos();
+    this.getTelefones();
+  },
+};
 </script>
+
+
