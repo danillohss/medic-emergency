@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import api from '../src/service/api'
 
 export default new Vuex.Store({
     state: {
@@ -78,6 +79,22 @@ export default new Vuex.Store({
         },
         setKitsMedicos(state, payload) {
             state.equipamentos.kitsMedicos = payload;
+        },
+    },
+    actions: {
+        async adicionarAmbulancias(state) {
+            //Aqui podemos fazer regras de negocio e condições para no fim efetuar o commit no state do vuex
+            const response = await api.get("/ambulancias");
+            state.commit('setAmbulancias', response.data);
+        },
+        async adicionarKitsMedicos(state) {
+            const response = await api.get("/kits-medicos");
+            console.log(response.data)
+            state.commit('setKitsMedicos', response.data);
+        },
+        async adicionarTelefones(state) {
+            const response = await api.get("/telefones");
+            state.commit('setTelefones', response.data);
         },
     }
 })

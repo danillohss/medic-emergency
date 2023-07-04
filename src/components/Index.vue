@@ -64,26 +64,14 @@ export default {
       const response = await api.get("/medicos");
       this.$store.commit("setMedicos", response.data);
     },
-    async getAmbulancias() {
-      const response = await api.get("/ambulancias");
-      this.$store.commit("setAmbulancias", response.data);
-    },
-    async getKitsMedicos() {
-      const response = await api.get("/kits-medicos");
-      this.$store.commit("setKitsMedicos", response.data);
-    },
-    async getTelefones() {
-      const response = await api.get("/telefones");
-      this.$store.commit("setTelefones", response.data);
-    },
   },
   async created() {
+    this.$store.dispatch("adicionarAmbulancias");
+    this.$store.dispatch("adicionarKitsMedicos");
+    this.$store.dispatch("adicionarTelefones");
     this.getEnfermeiros();
     this.getSocorristas();
     this.getMedicos();
-    this.getAmbulancias();
-    this.getKitsMedicos();
-    this.getTelefones();
   },
 };
 </script>
