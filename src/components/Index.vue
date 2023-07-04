@@ -38,7 +38,7 @@ import Equipamentos from "./Equipamentos.vue";
 import Equipes from "./Equipes.vue";
 import Profissionais from "./Profissionais.vue";
 import api from "../service/api";
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 export default {
   name: "INDEX",
   components: {
@@ -52,6 +52,11 @@ export default {
   },
   methods: {
     ...mapMutations(["setEnfermeiros", "setSocorristas", "setMedicos"]),
+    ...mapActions([
+      "adicionarAmbulancias",
+      "adicionarKitsMedicos",
+      "adicionarTelefones",
+    ]),
     async getEnfermeiros() {
       const response = await api.get("/enfermeiros");
       this.$store.commit("setEnfermeiros", response.data);
@@ -66,9 +71,9 @@ export default {
     },
   },
   async created() {
-    this.$store.dispatch("adicionarAmbulancias");
-    this.$store.dispatch("adicionarKitsMedicos");
-    this.$store.dispatch("adicionarTelefones");
+    this.adicionarAmbulancias("adicionarAmbulancias");
+    this.adicionarKitsMedicos("adicionarKitsMedicos");
+    this.adicionarTelefones("adicionarTelefones");
     this.getEnfermeiros();
     this.getSocorristas();
     this.getMedicos();

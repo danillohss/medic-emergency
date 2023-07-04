@@ -2,7 +2,10 @@
   <div>
     <div class="row">
       <div class="col">
-        <h5><i class="bi-boxes me-2"></i>Configuração da equipe</h5>
+        <h3 style="color: rgb(219, 31, 31)">
+          <i class="bi-boxes me-2"></i>Configuração da equipe
+        </h3>
+        <br />
       </div>
     </div>
     <div class="row">
@@ -32,7 +35,9 @@
           <div class="col">
             <img
               class="img-fluid"
-              :src="require('@/assets/ambulancias/indefinida.png')"
+              :src="
+                require(`@/assets/ambulancias/${this.imgTipoAmbulancia}.png`)
+              "
             />
           </div>
         </div>
@@ -46,7 +51,9 @@
             >
               Limpar Equipe
             </button>
-            <button type="button" class="btn btn-primary">Montar equipe</button>
+            <button type="button" class="btn btn-primary" @click="montarEquipe">
+              Montar equipe
+            </button>
           </div>
         </div>
       </div>
@@ -55,17 +62,33 @@
 </template>
 
 <script>
-//import { mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "CONFIGURACAOEQUIPE",
   computed: {
-    equipe() {
-      return this.$store.state.equipe;
+    ...mapState({
+      kitMedico: (state) => state.equipe.kitMedico,
+      ambulancia: (state) => state.equipe.ambulancia,
+      equipe: (state) => state.equipe,
+      equipes: (state) => state.equipes,
+    }),
+    imgTipoAmbulancia() {
+      if (this.kitMedico) {
+        return "uti";
+      }
+      if (this.ambulancia) {
+        return "simples";
+      }
+      return "indefinida";
     },
   },
   methods: {
     limparEquipe() {
       this.$store.commit("limparEquipe");
+    },
+    montarEquipe() {
+      let equipe = Object.assign({}, this.equipe);
+      this.$store.commit("adicionarEquipe", equipe);
     },
   },
 };

@@ -5,13 +5,14 @@ export default new Vuex.Store({
     state: {
         titulo: 'Emergências médicas',
         equipe: {
+            medico: '',
             enfermeiro: '',
             socorrista: '',
-            medico: '',
             ambulancia: '',
             telefone: '',
             kitMedico: ''
         },
+        equipes: [],
         enfermeiros: [],
         socorristas: [],
         medicos: [],
@@ -19,7 +20,7 @@ export default new Vuex.Store({
             ambulancias: [],
             telefones: [],
             kitsMedicos: []
-        }
+        },
     },
     getters: {
         totalEnfermeiros(state) {
@@ -44,19 +45,18 @@ export default new Vuex.Store({
         totalKits: state => state.equipamentos.kitsMedicos.length,
     },
     mutations: {
+        adicionarEquipe(state, equipe) {
+            state.equipes.push(equipe)
+            console.log(state.equipes)
+        },
         limparEquipe(state) {
-            state.equipe.enfermeiro = ''
-            state.equipe.socorrista = ''
-            state.equipe.medico = ''
-            state.equipe.ambulancia = ''
-            state.equipe.telefone = ''
-            state.equipe.kitMedico = ''
+            state.equipe = {}
         },
         setItemEquipe(state, item) {
             let t = item.tipo;
             let d = item.dados;
-            if (t == 'enfermeiros') state.equipe.enfermeiro = d.nome, console.log(d.nome)
-            if (t == 'socorristas') state.equipe.socorrista = d.nome, console.log(state.equipe.socorrista)
+            if (t == 'enfermeiros') state.equipe.enfermeiro = d.nome
+            if (t == 'socorristas') state.equipe.socorrista = d.nome
             if (t == 'medicos') state.equipe.medico = d.nome
             if (t == 'ambulancias') state.equipe.ambulancia = d.placa
             if (t == 'telefones') state.equipe.telefone = d.telefone
@@ -89,7 +89,6 @@ export default new Vuex.Store({
         },
         async adicionarKitsMedicos(state) {
             const response = await api.get("/kits-medicos");
-            console.log(response.data)
             state.commit('setKitsMedicos', response.data);
         },
         async adicionarTelefones(state) {
