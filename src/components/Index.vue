@@ -1,11 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{ $store.state.titulo }}</a>
-      </div>
-    </nav>
-
+    <Navbar />
     <div class="container">
       <div class="row mt-5">
         <div class="col-6 p">
@@ -36,6 +31,7 @@
 import ConfiguracaoEquipe from "./ConfiguracaoEquipe.vue";
 import Equipamentos from "./Equipamentos.vue";
 import Equipes from "./Equipes.vue";
+import Navbar from "./Navbar.vue";
 import Profissionais from "./Profissionais.vue";
 import api from "../service/api";
 import { mapMutations, mapActions } from "vuex";
@@ -46,6 +42,7 @@ export default {
     Equipamentos,
     Equipes,
     Profissionais,
+    Navbar,
   },
   props: {
     msg: String,
@@ -66,7 +63,10 @@ export default {
       this.$store.commit("setSocorristas", response.data);
     },
     async getMedicos() {
-      const response = await api.get("/medicos");
+      const params = {
+        escala: "12x36",
+      };
+      const response = await api.get("/medicos", { params });
       this.$store.commit("setMedicos", response.data);
     },
   },

@@ -4,6 +4,7 @@ import api from '../src/service/api'
 export default new Vuex.Store({
     state: {
         titulo: 'Emergências médicas',
+        cadastro: 'Cadastrar Equipamento/Profissional',
         equipe: {
             medico: '',
             enfermeiro: '',

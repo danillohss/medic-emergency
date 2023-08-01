@@ -27,11 +27,11 @@
     ],
     "ambulancias": [
             { "id": 1, "placa": "ABC-0000" },
-            { "id": 2, "placa": "BRA1A11" },
+            { "id": 2, "placa": "BRA-1911" },
             { "id": 3, "placa": "CBA-1111" },
-            { "id": 4, "placa": "ARB2B22" },
+            { "id": 4, "placa": "ARB-2322" },
             { "id": 5, "placa": "ZZZ-9999" },
-            { "id": 6, "placa": "XYZ7A88" }
+            { "id": 6, "placa": "XYZ-7A88" }
         ],
     "telefones": [
             { "id": 1, "telefone": "+55 11 98888-8888" },

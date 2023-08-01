@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import Index from '@/components/Index.vue'
 import ListaItens from '@/components/ListaItens.vue'
+import Cadastrar from '@/components/Cadastrar.vue'
+import CadastrarProfissionais from '@/components/CadastrarProfissional.vue'
+import CadastrarEquipamento from '@/components/CadastrarEquipamento.vue'
 
 const routes = [
     {
@@ -25,7 +27,21 @@ const routes = [
                 }
             }
         ]
-    }
+    },
+    {
+        path: '/cadastrar',
+        component: Cadastrar,
+        children: [
+            {
+                path: 'profissional',
+                component: CadastrarProfissionais,
+            },
+            {
+                path: 'equipamento',
+                component: CadastrarEquipamento,
+            },
+        ],
+    },
 ]
 const router = createRouter({
     history: createWebHistory(),
