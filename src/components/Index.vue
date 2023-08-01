@@ -63,10 +63,7 @@ export default {
       this.$store.commit("setSocorristas", response.data);
     },
     async getMedicos() {
-      const params = {
-        escala: "12x36",
-      };
-      const response = await api.get("/medicos", { params });
+      const response = await api.get("/medicos");
       this.$store.commit("setMedicos", response.data);
     },
   },
