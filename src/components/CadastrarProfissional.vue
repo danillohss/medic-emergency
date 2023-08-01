@@ -8,10 +8,14 @@
     <div class="row mt-3">
       <div class="col">
         <label class="form-label">Tipo do profissional</label>
-        <select class="form-select" aria-label="Default select example">
-          <option value="enfermeiro">Enfermeiro</option>
-          <option value="medico">Médico</option>
-          <option value="socorrista">Socorrista</option>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          v-model="profissional.tipo"
+        >
+          <option value="enfermeiros">Enfermeiro</option>
+          <option value="medicos">Médico</option>
+          <option value="socorristas">Socorrista</option>
         </select>
       </div>
     </div>
@@ -19,32 +23,36 @@
       <div class="col">
         <label class="form-label">Nome</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control" v-model="profissional.nome" />
         </div>
       </div>
       <div class="col">
         <label class="form-label">Turno</label>
-        <select class="form-select">
+        <select class="form-select" v-model="profissional.turno">
           <option value="12x36">12x36</option>
           <option value="24x48">24x48</option>
         </select>
       </div>
       <div class="col">
         <label class="form-label">Informe o documento do profissional</label>
-        <input type="number" class="form-control" />
+        <input
+          class="form-control"
+          v-model="profissional.documento"
+          v-maska="'####'"
+        />
       </div>
       <div class="col">
         <label class="form-label">Contato</label>
-        <input type="number" class="form-control" />
+        <input
+          class="form-control"
+          v-model="profissional.contato"
+          v-maska="'(##) # ####-####'"
+        />
       </div>
     </div>
     <div class="row mt-3">
       <div class="col">
-        <button
-          type="submit"
-          class="btn btn-primary"
-          @click="console.log('teste')"
-        >
+        <button type="submit" class="btn btn-primary" @click="atualizarTipo">
           Cadastrar
         </button>
       </div>
@@ -53,12 +61,36 @@
 </template>
 
 <script>
+import api from "@/service/api";
+import {
+  mapMutations,
+  //, mapActions
+} from "vuex";
 export default {
   name: "CadastrarProfissional",
   data() {
     return {
-      teste: null,
+      profissional: {
+        tipo: "",
+        nome: "",
+        turno: "",
+        documento: "",
+        contato: "",
+      },
     };
+  },
+  methods: {
+    ...mapMutations(["cadastroProfissional"]),
+    atualizarTipo() {
+      this.cadastroProfissional(this.profissional);
+      this.cadastrarProfissional();
+    },
+    async cadastrarProfissional() {
+      let tipo = this.profissional.tipo;
+      console.log(this.profissional.tipo);
+      const response = await api.post(`/${tipo}`, this.profissional);
+      this.$store.commit("cadastroProfissional", response.data);
+    },
   },
 };
 </script>

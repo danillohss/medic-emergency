@@ -5,6 +5,13 @@ export default new Vuex.Store({
     state: {
         titulo: 'Emergências médicas',
         cadastro: 'Cadastrar Equipamento/Profissional',
+        profissionalCadastro: {
+            tipo: '',
+            nome: '',
+            turno: '',
+            documento: '',
+            contato: '',
+        },
         equipe: {
             medico: '',
             enfermeiro: '',
@@ -80,6 +87,14 @@ export default new Vuex.Store({
         },
         setKitsMedicos(state, payload) {
             state.equipamentos.kitsMedicos = payload;
+        },
+        cadastroProfissional(state, payload) {
+            state.profissionalCadastro.tipo = payload.tipo;
+            state.profissionalCadastro.nome = payload.nome;
+            state.profissionalCadastro.turno = payload.turno;
+            state.profissionalCadastro.documento = payload.documento;
+            state.profissionalCadastro.contato = payload.contato;
+            state.enfermeiros.push(payload)
         },
     },
     actions: {
