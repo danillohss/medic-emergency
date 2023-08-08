@@ -107,7 +107,6 @@ export default {
         setTimeout(() => this.alerta = undefined, 3500)
       } else {
         let tipo = this.profissional.tipo;
-        console.log(this.profissional.tipo);
         const response = await api.post(`/${tipo}`, this.profissional);
         this.$store.commit("cadastroProfissional", response.data);
         this.alerta = true;

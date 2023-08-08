@@ -14,13 +14,6 @@
           <li class="nav-item">
             <router-link
               class="nav-link"
-              :to="{ name: 'equipamentos', params: { tipo: 'telefones' } }"
-              >Telefones({{ $store.getters.totalTelefones }})</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link"
               :to="{ name: 'equipamentos', params: { tipo: 'kits-medicos' } }"
               >Kits Médicos({{ $store.getters.totalKits }})</router-link
             >

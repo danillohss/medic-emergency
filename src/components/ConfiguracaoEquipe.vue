@@ -23,9 +23,6 @@
           Carro: <strong>{{ equipe.ambulancia }}</strong>
         </p>
         <p>
-          Telefone: <strong>{{ equipe.telefone }}</strong>
-        </p>
-        <p>
           Kit Médico:
           <strong>{{ equipe.kitMedico }}</strong>
         </p>

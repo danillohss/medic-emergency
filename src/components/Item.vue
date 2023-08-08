@@ -1,20 +1,24 @@
 <template>
-  <div class="row">
-    <div class="col-1" v-if="dados.id" v-text="dados.id"></div>
-    <div class="col" v-if="dados.nome" v-text="dados.nome"></div>
-    <div class="col" v-if="dados.placa" v-text="dados.placa"></div>
-    <div class="col" v-if="dados.telefone" v-text="dados.telefone"></div>
-    <div class="col" v-if="dados.kit" v-text="dados.kit"></div>
-    <div class="col-2" v-if="dados.escala" v-text="dados.escala"></div>
-    <div class="col-2" v-if="dados.turno" v-text="dados.turno"></div>
-    <div class="col-1">
-      <i
-        class="bi-check2-square"
-        style="cursor: pointer"
-        @click="adcItemEquipe"
-      ></i>
-    </div>
-  </div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>{{ dados.id }}</th>
+        <td v-if="dados.nome">{{ dados.nome }}</td>
+        <td v-if="dados.contato">{{ dados.contato }}</td>
+        <td v-if="dados.turno">{{ dados.turno }}</td>
+        <td v-if="dados.kit">{{ dados.kit }}</td>
+        <td v-if="dados.modelo">{{ dados.modelo }}</td>
+        <td v-if="dados.placa">{{ dados.placa }}</td>
+        <td>
+          <i
+            class="bi-check2-square"
+            style="cursor: pointer"
+            @click="adcItemEquipe"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -41,7 +45,6 @@ export default {
         tipo: this.tipo,
         dados: this.dados,
       };
-      //this.setItemEquipe(item);
       this.setItemEquipeVerificacao(item);
     },
   },
