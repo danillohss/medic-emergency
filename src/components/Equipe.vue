@@ -1,14 +1,5 @@
 <template>
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col" v-if="dados.enfermeiro">Enfermeiro</th>
-      <th scope="col" v-if="dados.socorrista">Enfermeiro</th>
-      <th scope="col" v-if="dados.medico">Médico</th>
-      <th scope="col" v-if="dados.ambulancia">Placa do veículo</th>
-      <th scope="col" v-if="dados.kit">Nº Kit médico</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <th>{{ dados.id }}</th>

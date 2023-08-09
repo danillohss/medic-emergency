@@ -20,7 +20,7 @@
           Médico: <strong>{{ equipe.medico }}</strong>
         </p>
         <p>
-          Carro: <strong>{{ equipe.ambulancia }}</strong>
+          Placa do veículo: <strong>{{ equipe.ambulancia }}</strong>
         </p>
         <p>
           Kit Médico:

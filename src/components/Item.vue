@@ -16,12 +16,20 @@
             @click="adcItemEquipe"
           ></i>
         </td>
+        <td>
+          <i
+            class="bi bi-trash3"
+            style="cursor: pointer"
+            @click="excluirItem(dados)"
+          ></i>
+        </td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import api from "@/service/api";
 import { mapMutations } from "vuex";
 export default {
   name: "ITEM",
@@ -46,6 +54,16 @@ export default {
         dados: this.dados,
       };
       this.setItemEquipeVerificacao(item);
+    },
+    async excluirItem(dados) {
+      const confirmar = window.confirm(
+        `Deseja realmente excluir o item ${dados.nome} ?`
+      );
+      console.log(this.dados);
+      if (confirmar) {
+        await api.delete(`/${this.dados.tipo}/${this.dados.id}`);
+        window.location.reload();
+      }
     },
   },
 };

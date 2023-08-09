@@ -2,95 +2,60 @@
   "enfermeiros": [
     {
       "tipo": "enfermeiros",
-      "nome": "Daniel",
-      "turno": "12x36",
-      "documento": "3214",
-      "contato": "(81) 9 8798-7654",
-      "id": 1
-    },
-    {
-      "tipo": "enfermeiros",
-      "nome": "Ignácio",
+      "nome": "Fernando",
       "turno": "24x48",
-      "documento": "5465",
-      "contato": "(64) 5 4654-6546",
-      "id": 2
-    },
-    {
-      "tipo": "enfermeiros",
-      "nome": "Teste1",
-      "turno": "manha",
-      "documento": "2132",
-      "contato": "(33) 2 1321-3213",
-      "id": 3
+      "documento": "3213",
+      "contato": "(81) 9 9999-9999",
+      "id": 1
     }
   ],
   "socorristas": [
     {
       "tipo": "socorristas",
-      "nome": "Diego",
+      "nome": "Leonardo",
       "turno": "24x48",
-      "documento": "3211",
-      "contato": "(81) 9 3546-5465",
+      "documento": "1121",
+      "contato": "(81) 9 9999-9999",
       "id": 1
-    },
-    {
-      "tipo": "socorristas",
-      "nome": "Teste2",
-      "turno": "24x48",
-      "documento": "3213",
-      "contato": "(81) 5 5546-5645",
-      "id": 2
     }
   ],
   "medicos": [
     {
       "tipo": "medicos",
-      "nome": "Danillo",
-      "turno": "24x48",
-      "documento": "1321",
-      "contato": "(81) 5 4654-6545",
+      "nome": "Isabel",
+      "turno": "12x36",
+      "documento": "3213",
+      "contato": "(81) 9 9999-9999",
       "id": 1
     },
     {
       "tipo": "medicos",
-      "nome": "Teste3",
-      "turno": "manha",
-      "documento": "3213",
-      "contato": "(65) 4 6546-4644",
+      "nome": "Danillo",
+      "turno": "24x48",
+      "documento": "6516",
+      "contato": "(81) 9 9999-9999",
       "id": 2
     }
   ],
   "ambulancias": [
     {
-      "placa": "AAA-6666",
-      "modelo": "sprinter",
+      "tipo": "ambulancias",
+      "placa": "DAS-1121",
+      "modelo": "master",
       "id": 1
     },
     {
-      "placa": "GFA-4456",
+      "tipo": "ambulancias",
+      "placa": "AAS-1113",
       "modelo": "ducato",
       "id": 2
-    },
-    {
-      "placa": "ASD-5416",
-      "modelo": "ducato",
-      "id": 3
-    },
-    {
-      "placa": "AAS-5646",
-      "modelo": "master",
-      "id": 4
     }
   ],
   "kits-medicos": [
     {
-      "kit": "CC-123",
+      "tipo": "kits-medicos",
+      "kit": "AA-444",
       "id": 1
-    },
-    {
-      "kit": "CA-565",
-      "id": 2
     }
   ]
 }

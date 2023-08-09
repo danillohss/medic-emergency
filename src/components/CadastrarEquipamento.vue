@@ -86,10 +86,12 @@ export default {
     return {
       equipamentoSelecionado: "",
       ambulancia: {
+        tipo: "ambulancias",
         placa: "",
         modelo: "",
       },
       kits: {
+        tipo: "kits-medicos",
         kit: "",
       },
       alerta: undefined,
