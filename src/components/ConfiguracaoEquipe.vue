@@ -85,7 +85,7 @@ export default {
     },
     montarEquipe() {
       let equipe = Object.assign({}, this.equipe);
-      this.$store.commit("adicionarEquipe", equipe);
+      this.$store.dispatch("adicionarEquipe", equipe);
     },
   },
 };

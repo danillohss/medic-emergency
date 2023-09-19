@@ -74,6 +74,9 @@ export default new Vuex.Store({
         setKitsMedicos(state, payload) {
             state.equipamentos.kitsMedicos = payload;
         },
+        getEquipe(state, payload) {
+            state.equipes = payload;
+        },
         cadastroProfissional(state, payload) {
             state.enfermeiros.push(payload)
         },
@@ -95,5 +98,14 @@ export default new Vuex.Store({
             const response = await api.get("/kits-medicos");
             state.commit('setKitsMedicos', response.data);
         },
+        async adicionarEquipe(state, context) {
+            console.log(context);
+            const add = await api.post("/equipesMontadas", context);
+            state.commit('adicionarEquipe', add.data);
+        },
+        async getEquipes(state) {
+            const response = await api.get("/equipesMontadas");
+            state.commit('getEquipe', response.data);
+        }
     }
 })

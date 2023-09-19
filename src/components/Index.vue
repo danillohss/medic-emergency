@@ -51,6 +51,8 @@ export default {
     ...mapActions([
       "adicionarAmbulancias",
       "adicionarKitsMedicos",
+      "adicionarEquipe",
+      "getEquipes"
     ]),
     async getEnfermeiros() {
       const response = await api.get("/enfermeiros");
@@ -68,6 +70,7 @@ export default {
   async created() {
     this.adicionarAmbulancias("adicionarAmbulancias");
     this.adicionarKitsMedicos("adicionarKitsMedicos");
+    this.getEquipes("getEquipes");
     this.getEnfermeiros();
     this.getSocorristas();
     this.getMedicos();

@@ -59,7 +59,6 @@ export default {
       const confirmar = window.confirm(
         `Deseja realmente excluir o item ${dados.nome} ?`
       );
-      console.log(this.dados);
       if (confirmar) {
         await api.delete(`/${this.dados.tipo}/${this.dados.id}`);
         window.location.reload();
