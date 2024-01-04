@@ -2,41 +2,15 @@
   "enfermeiros": [
     {
       "tipo": "enfermeiros",
-      "nome": "Fernando",
-      "turno": "24x48",
-      "documento": "3213",
-      "contato": "(81) 9 9999-9999",
-      "id": 1
-    }
-  ],
-  "socorristas": [
-    {
-      "tipo": "socorristas",
-      "nome": "Leonardo",
-      "turno": "24x48",
-      "documento": "1121",
-      "contato": "(81) 9 9999-9999",
-      "id": 1
-    }
-  ],
-  "medicos": [
-    {
-      "tipo": "medicos",
-      "nome": "Isabel",
-      "turno": "12x36",
-      "documento": "3213",
-      "contato": "(81) 9 9999-9999",
-      "id": 1
-    },
-    {
-      "tipo": "medicos",
       "nome": "Danillo",
-      "turno": "24x48",
-      "documento": "6516",
-      "contato": "(81) 9 9999-9999",
-      "id": 2
+      "turno": "manha",
+      "documento": "3333",
+      "contato": "(88) 8 8888-8888",
+      "id": 1
     }
   ],
+  "socorristas": [],
+  "medicos": [],
   "ambulancias": [
     {
       "tipo": "ambulancias",
@@ -49,6 +23,13 @@
       "placa": "AAS-1113",
       "modelo": "ducato",
       "id": 2
+    },
+    {
+      "tipo": "ambulancias",
+      "placa": "AAA-2222",
+      "modelo": "ducato",
+      "descricao": "teste",
+      "id": 3
     }
   ],
   "kits-medicos": [

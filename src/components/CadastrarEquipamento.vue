@@ -54,23 +54,42 @@
         <input class="form-control" v-maska="'AA-###'" v-model="kits.kit" />
       </div>
     </div>
+    <div class="mb-3" v-if="equipamentoSelecionado == 'ambulancias'">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Adicione uma descrição opcional ao equipamento.</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        v-model="ambulancia.descricao"
+      ></textarea>
+    </div>
+    <div class="mb-3" v-if="equipamentoSelecionado == 'kits-medicos'">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Adicione uma descrição opcional ao equipamento.</label
+      >
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        v-model="kits.descricao"
+      ></textarea>
+    </div>
+    <br />
     <div class="row mt-3">
       <div class="col">
         <button
-          v-if="equipamentoSelecionado == 'ambulancias'"
+          v-if="equipamentoSelecionado != ''"
           type="submit"
           class="btn btn-primary"
-          @click="cadastrarAmbulancia"
+          @click="
+            this.equipamentoSelecionado == 'ambulancias'
+              ? cadastrarAmbulancia()
+              : cadastrarKit()
+          "
         >
-          Cadastrar Ambulancia
-        </button>
-        <button
-          v-if="equipamentoSelecionado == 'kits-medicos'"
-          type="submit"
-          class="btn btn-primary"
-          @click="cadastrarKit"
-        >
-          Cadastrar Kit médico
+          Cadastrar {{ equipamentoBotao }}
         </button>
       </div>
     </div>
@@ -89,14 +108,32 @@ export default {
         tipo: "ambulancias",
         placa: "",
         modelo: "",
+        descricao: "",
       },
       kits: {
         tipo: "kits-medicos",
         kit: "",
+        descricao: "",
       },
       alerta: undefined,
     };
   },
+
+  computed: {
+    equipamentoBotao() {
+      return this.equipamentoSelecionado == "ambulancias"
+        ? "Ambulancia"
+        : "Kit Médico";
+    },
+  },
+
+  watch: {
+    equipamentoSelecionado() {
+      this.ambulancia.descricao = "";
+      this.kits.descricao = "";
+    },
+  },
+
   methods: {
     ...mapMutations(["cadastroAmbulancia", "cadastroKit"]),
     cadastrar() {
