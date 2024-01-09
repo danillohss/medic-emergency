@@ -30,6 +30,13 @@
       "modelo": "ducato",
       "descricao": "teste",
       "id": 3
+    },
+    {
+      "tipo": "ambulancias",
+      "placa": "ASD-1111",
+      "modelo": "ducato",
+      "descricao": "teste ambu",
+      "id": 4
     }
   ],
   "kits-medicos": [
@@ -37,6 +44,18 @@
       "tipo": "kits-medicos",
       "kit": "AA-444",
       "id": 1
+    },
+    {
+      "tipo": "kits-medicos",
+      "kit": "AS-132",
+      "descricao": "teste kit",
+      "id": 2
+    },
+    {
+      "tipo": "kits-medicos",
+      "kit": "AS-111",
+      "descricao": "testeeeeeeeeeee",
+      "id": 3
     }
   ],
   "equipesMontadas": []

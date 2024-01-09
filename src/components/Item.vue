@@ -17,6 +17,15 @@
           ></i>
         </td>
         <td>
+            <i
+              @click="mostrarDescricao(dados.descricao)"
+              class="bi bi-info-circle"
+              style="cursor: pointer"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            ></i>
+          </td>
+        <td>
           <i
             class="bi bi-trash3"
             style="cursor: pointer"
@@ -26,6 +35,44 @@
       </tr>
     </tbody>
   </table>
+  <!-- Modal -->
+  <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Descrição
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              @click="limparDescricao"
+            ></button>
+          </div>
+          <div class="modal-body" v-if="descricao">{{ descricao }}</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              @click="limparDescricao"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -37,6 +84,13 @@ export default {
     dados: Object,
     tipo: String,
   },
+
+  data() {
+    return {
+      descricao: "", // inicialize a propriedade descricao
+    };
+  },
+
   methods: {
     ...mapMutations({
       setItemEquipe: "setItemEquipe",
@@ -48,6 +102,12 @@ export default {
         commit("setItemEquipe", payload);
       },
     }),
+    mostrarDescricao(descricao) {
+      this.descricao = descricao;
+    },
+    limparDescricao() {
+      this.descricao = "";
+    },
     adcItemEquipe() {
       let item = {
         tipo: this.tipo,
